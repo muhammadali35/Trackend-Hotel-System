@@ -31,6 +31,12 @@ app.use('/api/rooms', roomRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/users', userRoutes);
 app.use('/api', contactRoutes);
+app.get('/',(req,res)=>{
+  res.send({
+    activeStatus:true,
+    error:false
+  })
+})
 
 // app.use('/api/rsa', rsaRoutes); // Added
 
