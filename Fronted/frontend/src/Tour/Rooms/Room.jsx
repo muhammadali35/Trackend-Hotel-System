@@ -40,7 +40,7 @@ const res = await axios.get("https://trackend-hotel-system-id7k.vercel.app/api/r
               className="border rounded-xl shadow-md p-4 hover:shadow-lg transition cursor-pointer bg-gray-50"
             >
               <img
-                src={`http://localhost:5000/${room.images[0]}`}
+                src={`https://trackend-hotel-system-id7k.vercel.app/${room.images[0]}`}
                 alt={room.roomType}
                 className="w-full h-52 object-cover rounded-lg mb-4"
               />

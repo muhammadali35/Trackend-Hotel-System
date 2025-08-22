@@ -13,7 +13,7 @@ const RoomDetail = () => {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/rooms/${id}`);
+        const response = await fetch(`https://trackend-hotel-system-id7k.vercel.app/api/rooms/${id}`);
         if (!response.ok) throw new Error("Room not found");
         const data = await response.json();
         setRoom(data);
@@ -41,7 +41,7 @@ const RoomDetail = () => {
               {/* Left Side Image */}
               <div className="rounded-xl overflow-hidden shadow-md h-[350px]">
                 <img
-                  src={`http://localhost:5000/${room?.images?.[0] || "placeholder.jpg"}`}
+                  src={`https://trackend-hotel-system-id7k.vercel.app/${room?.images?.[0] || "placeholder.jpg"}`}
                   alt={room?.roomType}
                   className="w-full h-full object-cover transform hover:scale-105 transition duration-300"
                 />

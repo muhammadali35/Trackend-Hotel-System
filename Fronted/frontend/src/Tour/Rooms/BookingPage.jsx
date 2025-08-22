@@ -20,7 +20,7 @@ const BookingPage = () => {
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/rooms/${id}`);
+        const response = await fetch(`https://trackend-hotel-system-id7k.vercel.app/api/rooms/${id}`);
         if (!response.ok) throw new Error("Room not found");
         const data = await response.json();
         setRoom(data);
@@ -65,7 +65,7 @@ const BookingPage = () => {
               {room.roomType}
             </h2>
             <img
-              src={`http://localhost:5000/${room.images?.[0]}`}
+              src={`https://trackend-hotel-system-id7k.vercel.app/${room.images?.[0]}`}
               alt={room.roomType}
               className="rounded-xl w-full h-64 object-cover shadow-md mb-6"
             />

@@ -43,7 +43,7 @@ const Confirmation = () => {
       const encrypted = rsa.encrypt(JSON.stringify(cardData));
       const encryptedCardData = forge.util.encode64(encrypted);
 
-      const response = await fetch("http://localhost:5000/api/bookings", {
+      const response = await fetch("https://trackend-hotel-system-id7k.vercel.app/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ room, formData, totalPrice, encryptedCardData }),
@@ -82,7 +82,7 @@ const Confirmation = () => {
 
           <div className="border-b border-gray-200 pb-4 mb-6 flex gap-4">
             <img
-              src={`http://localhost:5000/${room.images?.[0]}`}
+              src={`https://trackend-hotel-system-id7k.vercel.app/${room.images?.[0]}`}
               alt={room.roomType}
               className="w-32 h-24 rounded object-cover"
             />
