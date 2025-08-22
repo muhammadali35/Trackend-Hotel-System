@@ -19,14 +19,20 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: [
+    "https://trackendhotel.netlify.app", // ✅ Netlify
+    "http://localhost:5000"              // ✅ Vite local
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));app.use(express.json());
 app.use(bodyParser.json({ limit: "10mb" }));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
-app.use('/api/hotels', hotelRoutes);
+app.use('/api/hotels', hotelRoutes)
 app.use('/api/rooms', roomRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/users', userRoutes);
