@@ -9,7 +9,7 @@ const Rooms = () => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/rooms");
+const res = await axios.get("https://trackend-hotel-system-id7k.vercel.app/api/rooms");
         setRooms(res.data);
       } catch (error) {
         console.error("Error fetching rooms:", error.message);
