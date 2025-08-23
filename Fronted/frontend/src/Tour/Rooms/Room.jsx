@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
+  const [sortOrder, setSortOrder] = useState("default"); // default, asc, desc
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-const res = await axios.get("https://trackend-hotel-system-id7k.vercel.app/api/rooms");
+        const res = await axios.get("https://trackend-hotel-system-id7k.vercel.app/api/rooms");
         setRooms(res.data);
       } catch (error) {
         console.error("Error fetching rooms:", error.message);
@@ -19,21 +20,41 @@ const res = await axios.get("https://trackend-hotel-system-id7k.vercel.app/api/r
     fetchRooms();
   }, []);
 
+  // ✅ Sort rooms before rendering
+  const sortedRooms = [...rooms].sort((a, b) => {
+    if (sortOrder === "asc") return a.price - b.price;   // Low → High
+    if (sortOrder === "desc") return b.price - a.price; // High → Low
+    return 0; // default (no sorting)
+  });
+
   const handleExplore = (id) => {
     navigate(`/rooms/${id}`);
   };
 
   return (
     <div className="p-6 bg-white min-h-screen">
-      <h2 className="text-4xl font-bold text-center text-yellow-500 mb-10 underline underline-offset-8 decoration-[#F2D17A]">
+      <h2 className="text-4xl font-bold text-center text-yellow-500 mb-6 underline underline-offset-8 decoration-[#F2D17A]">
         🏨 Our Available Rooms
       </h2>
+
+      {/* 🔽 Sorting Dropdown */}
+      <div className="flex justify-end mb-6">
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="border rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        >
+          <option value="default">Sort by</option>
+          <option value="asc">Price: Low → High</option>
+          <option value="desc">Price: High → Low</option>
+        </select>
+      </div>
 
       {rooms.length === 0 ? (
         <p className="text-center text-gray-600">No rooms available at the moment.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {rooms.map((room) => (
+          {sortedRooms.map((room) => (
             <div
               key={room._id}
               onClick={() => handleExplore(room._id)}
