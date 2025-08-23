@@ -10,7 +10,7 @@ function Roomcards(props) {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/rooms/${props.roomId}`, {
+      const res = await fetch(`https://trackend-hotel-system-id7k.vercel.app/api/rooms/${props.roomId}`, {
         method: 'DELETE',
       });
 

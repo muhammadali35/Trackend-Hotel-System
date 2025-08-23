@@ -8,7 +8,7 @@ function Rooms() {
 
   const fetchRooms = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/rooms');
+      const res = await fetch('https://trackend-hotel-system-id7k.vercel.app/api/rooms');
       const data = await res.json();
       setRooms(data);
     } catch (err) {

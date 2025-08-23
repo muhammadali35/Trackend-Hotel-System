@@ -40,7 +40,7 @@ function Addroom({ openModal, setOpenModal }) {
     uploadedFiles.forEach(file => formData.append('images', file));
 
     try {
-      const res = await fetch('http://localhost:5000/api/rooms', {
+      const res = await fetch('https://trackend-hotel-system-id7k.vercel.app/api/rooms', {
         method: 'POST',
         body: formData
       });

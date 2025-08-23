@@ -24,7 +24,7 @@ const Contact = () => {
     }
 
     try {
-      const res = await axios.post( 'http://localhost:5000/api/contact', formData);
+      const res = await axios.post( 'https://trackend-hotel-system-id7k.vercel.app/api/contact', formData);
       if (res.status === 200) {
         setStatus("✅ Your message has been sent!");
         setFormData({ name: '', email: '', message: '' });

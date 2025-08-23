@@ -13,7 +13,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchRecentBookings = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/bookings");
+        const res = await axios.get("https://trackend-hotel-system-id7k.vercel.app/api/bookings");
         const bookings = res.data;
         setRecentBookings(bookings);
 

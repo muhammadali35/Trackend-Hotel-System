@@ -20,7 +20,7 @@ function Editroom() {
 
   const fetchRoom = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/rooms/${id}`);
+      const res = await axios.get(`https://trackend-hotel-system-id7k.vercel.app/api/rooms/${id}`);
       setRoomData(res.data);
     } catch (err) {
       console.error("Error fetching room:", err);
